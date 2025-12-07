@@ -33,13 +33,13 @@ async def generate(update: Update, context: ContextTypes.DEFAULT_TYPE):
 headers = {"Authorization": f"Bearer {NOVITA_API_KEY}"}
 
     try:
-        r = requests.post(url, json=payload, headers=headers, timeout=120)
-        r.raise_for_status()
-        img_b64 = r.json()["images"][0]
-        img_data = base64.b64decode(img_b64)
-        await update.message.reply_photo(img_data, caption=prompt[:100])
-    except Exception as e:
-        await update.message.reply_text(f"Hata: {str(e)}")
+            r = requests.post(url, json=payload, headers=headers, timeout=180)
+            r.raise_for_status()
+            img_b64 = r.json()["images"][0]
+            img_data = base64.b64decode(img_b64)
+            await update.message.reply_photo(img_data, caption=prompt[:100])
+       except Exception as e:
+           await update.message.reply_text(f"Hata: {e}")
 
 def main():
     app = Application.builder().token(BOT_TOKEN).build()
