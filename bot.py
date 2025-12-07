@@ -30,7 +30,7 @@ async def generate(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "seed": -1,
         "batch_size": 1
     }
-    headers = {"Authorization": f"Bearer {NOVITA_KEY}"}
+headers = {"Authorization": f"Bearer {NOVITA_API_KEY}"}
 
     try:
         r = requests.post(url, json=payload, headers=headers, timeout=120)
